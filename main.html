@@ -82,9 +82,9 @@
             // 當下拉選單選擇改變時，印出選中的值
             $("#options").on("change", function () {
                 const selectedValue = $(this).val();
-                const selectedText = $("#options option:selected").text();
                 // console.log(selectedValue); // 顯示選中的值
                 $("#image").attr("src", selectedValue);
+                
             });
             $("#login").on("click",function(){
                 var acc = $("#account_input").val();
@@ -97,6 +97,7 @@
                 }
             });
             $("#image").on("click", function(){
+                    const selectedText = $("#options option:selected").text();
                     var searchUrl = `https://www.google.com/search?q=${selectedText}`;
                     window.open(searchUrl, "_blank");
                 });
