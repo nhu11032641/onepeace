@@ -82,11 +82,8 @@
             // 當下拉選單選擇改變時，印出選中的值
             $("#options").on("change", function () {
                 const selectedValue = $(this).val();
-                
                 // console.log(selectedValue); // 顯示選中的值
-                // $("#image").attr("src", selectedValue);
-                const selectedText = $("#options option:selected").text();
-                $("#image").attr("src", `https://fivetiu.com/${selectedText}/cover-n.jpg`);
+                $("#image").attr("src", selectedValue);
                 
             });
             $("#login").on("click",function(){
