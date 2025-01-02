@@ -85,10 +85,6 @@
                 const selectedText = $("#options option:selected").text();
                 // console.log(selectedValue); // 顯示選中的值
                 $("#image").attr("src", selectedValue);
-                $("#image").on("click", function(){
-                    var searchUrl = `https://www.google.com/search?q=${selectedText}`;
-                    window.open(searchUrl, "_blank");
-                });
             });
             $("#login").on("click",function(){
                 var acc = $("#account_input").val();
@@ -99,7 +95,11 @@
                 }else{
                     alert("帳號密碼錯誤")
                 }
-            })
+            });
+            $("#image").on("click", function(){
+                    var searchUrl = `https://www.google.com/search?q=${selectedText}`;
+                    window.open(searchUrl, "_blank");
+                });
         });
     </script>
 </body>
