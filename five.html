@@ -29,26 +29,24 @@
 
         /* Lightbox 背景 */
         #lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            z-index: 9999;
+    display: none;  /* 一開始隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
 
-            /* Flex 垂直+水平置中 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 水平置中 */
-            justify-content: center;
-            /* 垂直置中 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
 
-            padding: 10px;
-            text-align: center;
-        }
+    /* 用這個保持 Flex 屬性，顯示時 JS 再切換 */
+    display: none; 
+}
 
         #lightbox img {
             max-width: 90%;
@@ -104,6 +102,7 @@
 
     <script>
         $(document).ready(function () {
+            $("#lightbox").fadeIn();
             const txtFile = 'https://raw.githubusercontent.com/nhu11032641/onepeace/refs/heads/main/result2.txt';
             let jsonData = [];
 
@@ -173,5 +172,6 @@
         });
     </script>
 </body>
+
 
 </html>
