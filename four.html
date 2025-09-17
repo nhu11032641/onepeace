@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONE PIECE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="home">
+            <h2 style="margin-top: 15px;">ONE PIECE</h2>
+            <select id="options" name="options" class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example" style="margin-top: 15px;">
+                <option value="">-- 請選擇 --</option>
+            </select>
+        </div>
+        <img src="" id="image" class="img-fluid rounded-3"/>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // 定義要抓取的 txt 檔案路徑
+            const txtFile = 'https://raw.githubusercontent.com/nhu11032641/onepeace/refs/heads/main/result.txt';
+
+            // 使用 jQuery 的 AJAX 方法抓取 txt 檔案
+            $.ajax({
+                url: txtFile,
+                type: 'GET',
+                dataType: 'text', // 指定回應格式為文本
+                success: function (data) {
+                    // 将单引号替换为双引号
+                    const correctedData = data.replace(/'/g, '"');
+
+                    // 解析修正后的JSON数据
+                    const jsonData = JSON.parse(correctedData);
+
+                    // 清空下拉選單中的原始選項
+                    $('#options').empty();
+
+                    // 預設的選項
+                    $('#options').append('<option value="">-- 請選擇 --</option>');
+
+                    // 將每一條資料加入到下拉選單
+                    jsonData.forEach(item => {
+                        const optElement = $('<option></option>')
+                            .val(item.img)  // 使用 'num' 作為選項的值
+                            .text(item.num);  // 使用 'detail' 作為選項的顯示文本
+                        $('#options').append(optElement);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('載入錯誤:', error);
+                }
+            });
+
+            // 當下拉選單選擇改變時，印出選中的值
+            $("#options").on("change", function () {
+                const selectedValue = $(this).val();
+                // console.log(selectedValue); // 顯示選中的值
+                $("#image").attr("src", selectedValue);
+                
+            });
+            $("#image").on("click", function(){
+                    const selectedText = $("#options option:selected").text();
+                    var searchUrl = `https://www.google.com/search?q=${selectedText}`;
+                    window.open(searchUrl, "_blank");
+                });
+        });
+    </script>
+</body>
+
+</html>
