@@ -1085,7 +1085,7 @@
  },
  {
   "num": "Heyzo-0136",
-  "img": "https://mc.yandex.ru/watch/72255274"
+  "img": "https://statics.javcdn.li/contents/videos_screenshots/159000/159794/preview.mp4.jpg"
  },
  {
   "num": "SONE-445",
@@ -1349,7 +1349,7 @@
  },
  {
   "num": "ONSG-073",
-  "img": "https://c0.jdbstatic.com/covers/ne/ned1Za.jpg"
+  "img": "https://fourhoi.com/onsg-073/cover-n.jpg"
  },
  {
   "num": "LULU-271",
